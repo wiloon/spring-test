@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  session:
+    timeout: 1800 # session的过期时间，单位是秒
+    store-type: REDIS # session的存储类型，枚举
+    redis:
+      namespace: "spring:session" # session存储在redis中的命名空间
+      flush-mode: IMMEDIATE # 刷出模式，枚举：ON_SAVE ，IMMEDIATE
+      cleanup-cron: "0 * * * * *" # 定时清理过期session任务的`cron`表达式
+  redis:
+    host: 192.168.50.114
+    port: 6379
