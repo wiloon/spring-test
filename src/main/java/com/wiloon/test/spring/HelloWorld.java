@@ -14,14 +14,8 @@ public class HelloWorld {
     @RequestMapping("/")
     @ResponseBody
     public Map<String, Object> hello(HttpSession session) {
-        System.out.println("session: " + session.getId());
-        UUID uid = (UUID) session.getAttribute("uid");
-        if (uid == null) {
-            uid = UUID.randomUUID();
-        } else {
-            System.out.println("uid:" + uid.toString());
-        }
-        session.setAttribute("uid", uid);
+        System.out.println("session id: " + session.getId());
+        session.setAttribute("uid", UUID.randomUUID().toString());
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("hello", "world");
